@@ -16,6 +16,9 @@
       ],
     },
 
+    // uploadcare.com
+    "types": ["@uploadcare/blocks/types/jsx"],
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
