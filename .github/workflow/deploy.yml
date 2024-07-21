@@ -23,6 +23,12 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Remove CNAME file if it exists
+        run: |
+          if [ -f ./dist/CNAME ]; then
+            rm ./dist/CNAME
+          fi
+
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
