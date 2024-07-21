@@ -3,6 +3,7 @@ import { ProfileInfo } from "@/types";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, User } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
+// type
 type AuthContextData = {
     user: User | null
     logIn: typeof logIn
@@ -43,6 +44,7 @@ const updateProfileInfo = (profileInfo: ProfileInfo) => {
     })
 }
 
+// create context user data
 export const userAuthContext = createContext<AuthContextData>({
     user: null,
     logIn,

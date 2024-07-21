@@ -67,8 +67,10 @@ function UserList({}: IUserList) {
                 </div>
             </Link>
 
+            {/* title */}
             <h3 className="text-sm text-slate-300">Suggested Friends</h3>
 
+            {/* render data */}
             <div className="my-4">{suggestedUser.length > 0 ? renderUsers() : ""}</div>
         </div>
     )

@@ -46,11 +46,6 @@ function MyPhotos() {
     
     const renderPost = () => {
         return data.map((item) => {
-            // console.log("item:", item)
-            // console.log("item.photos[0].uuid:", item.photos[0].uuid)
-
-            // d6f42cdd-4484-4ff5-98c2-0130f730510d
-            // d6f42cdd-4484-4ff5-98c2-0130f730510d
             return (
                 <div key={item.photos[0].uuid} className="w-fit relative">
                     <div className="absolute top-0 left-0 bottom-0 right-0 bg-transparent hover:bg-slate-950 hover:bg-opacity-75 group transition-all duration-200">
