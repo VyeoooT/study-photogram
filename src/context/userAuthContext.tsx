@@ -1,5 +1,6 @@
 import { auth } from "@/firebaseConfig";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, User } from "firebase/auth";
+import { ProfileInfo } from "@/types";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, User } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type AuthContextData = {
@@ -8,6 +9,7 @@ type AuthContextData = {
     signUp: typeof signUp
     logOut: typeof logOut
     googleSignIn: typeof googleSignIn
+    updateProfileInfo: typeof updateProfileInfo
 }
 
 // login
@@ -31,12 +33,23 @@ const googleSignIn = () => {
     return signInWithPopup(auth, googleAuthProvider)
 }
 
+// update profile info
+const updateProfileInfo = (profileInfo: ProfileInfo) => {
+    console.log("The user profile info is: ", profileInfo)
+    
+    return updateProfile(profileInfo.user!, {
+        displayName: profileInfo.displayName,
+        photoURL: profileInfo.photoURL,
+    })
+}
+
 export const userAuthContext = createContext<AuthContextData>({
     user: null,
     logIn,
     signUp,
     logOut,
-    googleSignIn
+    googleSignIn,
+    updateProfileInfo,
 })
 
 // interface for component
@@ -53,7 +66,7 @@ export const UserAuthProvider: React.FunctionComponent<IUserAuthProviderProps> =
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
-                console.log("The logger in user state is: ", user)
+                // console.log("The logger in user state is: ", user)
             }
 
             return () => {
@@ -69,6 +82,7 @@ export const UserAuthProvider: React.FunctionComponent<IUserAuthProviderProps> =
         signUp,
         logOut,
         googleSignIn,
+        updateProfileInfo,
     }
     
     return (

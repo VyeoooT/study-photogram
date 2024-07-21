@@ -31,16 +31,18 @@ function CreatePost() {
 
         const photoMeta: PhotoMeta[] = fileEntry.files.map((file) => {
             return {
-                cdnUrl: file.cdnUrl,
-                uuid: file.uuid
+                cdnUrl: file.cdnUrl!,
+                uuid: file.uuid!,
             }
         })
 
         if (user != null) {
             const newPost: Post = {
                 ...post,
-                userId: user?.uid || null,
-                photos: photoMeta
+                userId: user?.uid,
+                photos: photoMeta,
+                username: user.displayName!,
+                photoURL: user.photoURL!,
             }
 
             console.log("The final posy is: ", newPost)
@@ -75,7 +77,7 @@ function CreatePost() {
 
                             <div className="flex flex-col">
                                 <Label className="mb-4" htmlFor="photo">Photos</Label>
-                                <FileUploader fileEntry={fileEntry} onChange={setFileEntry} />
+                                <FileUploader fileEntry={fileEntry} onChange={setFileEntry} preview={true} />
                             </div>
                             
                             <Button className="mt-8 px-7" type="submit">Create Post</Button>
