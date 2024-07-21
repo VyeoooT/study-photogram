@@ -23,11 +23,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Ensure no CNAME file
-        run: |
-          if [ -f ./dist/CNAME ]; then
-            rm ./dist/CNAME
-          fi
+      - name: Add CNAME file
+        run: echo 'photogram.linhtv.io.vn' > ./dist/CNAME
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
@@ -50,12 +47,6 @@ jobs:
         with:
             name: production-files
             path: ./dist
-
-      - name: Ensure no CNAME file
-        run: |
-          if [ -f ./dist/CNAME ]; then
-            rm ./dist/CNAME
-          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
