@@ -20,7 +20,7 @@ function CreatePost() {
         photos: [],
         likes: 0,
         userlikes: [],
-        userId: null,
+        userId: null!,
         date: new Date(),
     })
 
