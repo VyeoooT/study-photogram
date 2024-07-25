@@ -23,9 +23,9 @@ function UserList({}: IUserList) {
     }, [])
 
     const renderUsers = () => {
-        return suggestedUser.map((user) => {
+        return suggestedUser.map((user, idx) => {
             return (
-                <div className="flex flex-row items-center justify-start border-gray-400 mb-4">
+                <div key={idx} className="flex flex-row items-center justify-start border-gray-400 mb-4">
                     {/* avatar */}
                     <span className="mr-2">
                         <img
