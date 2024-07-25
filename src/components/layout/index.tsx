@@ -1,6 +1,7 @@
 import React from "react"
 import Sidebar from "../sidebar"
 import UserList from "../userList"
+import LinkGithub from "../linkGit"
 
 interface ILayoutProps {
     children: React.ReactNode
@@ -9,7 +10,7 @@ interface ILayoutProps {
 function Layout({ children }: ILayoutProps) {
     return (
         <div className="flex bg-white">
-            <aside className="flex gap-x-4 bg-slate-800 fixed top-0 left-0 z-40 lg:w-60 h-screen">
+            <aside className="flex gap-x-4 bg-slate-800 fixed top-0 left-0 lg:w-60 h-screen z-40">
                 <Sidebar />
             </aside>
 
@@ -20,6 +21,10 @@ function Layout({ children }: ILayoutProps) {
             <aside className="lg:w-60 h-screen lg:block hidden bg-slate-800 fixed top-0 right-0 z-40">
                 <UserList />
             </aside>
+
+            <div>
+                <LinkGithub />
+            </div>
         </div>
     )
 }
