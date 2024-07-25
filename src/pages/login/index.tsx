@@ -95,7 +95,7 @@ function Login({}: LoginProps) {
                                         <Input
                                             id="email"
                                             type="email"
-                                            placeholder="dipesh@example.com"
+                                            placeholder="example@domain.com"
                                             value={userLoginInfo.email}
                                             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                                                 setUserLoginInfo({ ...userLoginInfo, email: e.target.value })
